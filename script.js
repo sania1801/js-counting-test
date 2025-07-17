@@ -1,9 +1,12 @@
 const numQuestions = 3;
+const sleepInput = document.getElementById("sleepInput");
+
 let currentQuestion = 0;
 let correctAnswers = 0;
 let a, b;
 let startTime;
 let timings = [];
+let sleepHours = null;
 
 const questionEl = document.getElementById("question");
 const answerEl = document.getElementById("answer");
@@ -19,6 +22,14 @@ answerEl.addEventListener("keypress", (e) => {
 });
 
 function startTest() {
+  const sleepValue = parseFloat(sleepInput.value);
+  if (isNaN(sleepValue) || sleepValue <= 0) {
+    alert("Пожалуйста, укажите, сколько вы спали.");
+    return;
+  }
+  
+  sleepHours = sleepValue;
+  
   currentQuestion = 0;
   correctAnswers = 0;
   timings = [];
@@ -91,6 +102,7 @@ function finishTest() {
     totalTime += parseFloat(t.time);
   });
   resultsEl.innerHTML += `</ul><p>Среднее время: ${(totalTime / timings.length).toFixed(2)} сек</p>`;
+  resultsEl.innerHTML += `<p><strong>Вы указали, что спали: ${sleepHours} часов</strong></p>`;
 }
 
 function getRandomTwoDigit() {
