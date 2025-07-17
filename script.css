@@ -26,3 +26,16 @@ input, button {
 ul {
     text-align: left;
 }
+
+.rules {
+    margin-bottom: 20px;
+    text-align: left;
+    background-color: #eef;
+    padding: 10px;
+    border-radius: 8px;
+}
+.rules summary {
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
